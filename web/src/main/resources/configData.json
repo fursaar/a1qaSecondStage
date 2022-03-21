@@ -1,3 +1,4 @@
 {
-  "baseUrl": "https://userinyerface.com/"
+  "baseUrl": "https://userinyerface.com/",
+  "robotDelay": 1000
 }

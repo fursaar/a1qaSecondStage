@@ -9,7 +9,7 @@ public class BaseTest {
     @BeforeMethod
     public void init() {
         AqualityServices.getBrowser().maximize();
-        AqualityServices.getBrowser().goTo(JsonUtil.jsonFile.getValue("/baseUrl").toString());
+        AqualityServices.getBrowser().goTo(JsonUtil.configData.getValue("/baseUrl").toString());
 
     }
 

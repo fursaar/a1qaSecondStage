@@ -11,10 +11,9 @@ import org.openqa.selenium.By;
 
 public class MainPage extends Form {
 
-    private final ILink startLink = getElementFactory().getLink(By.xpath("//div[@id='app']//a[contains(@class, 'start')]"), "Start");
-
+    private final ILink startLink = getElementFactory().getLink(getLocator(), "Start");
     public MainPage() {
-        super(By.xpath("//div[@id='app']//button[contains(@class, 'start')]"), "Start button");
+        super(By.xpath("//a[contains(@class, 'start')]"), "Start");
     }
 
     public void clickToStartLink() {

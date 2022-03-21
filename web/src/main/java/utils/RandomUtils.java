@@ -8,15 +8,14 @@ public class RandomUtils {
     private static final String CHAR_LOWER = "abcdefghijklmnopqrstuvwxyz";
     private static final String CHAR_UPPER = CHAR_LOWER.toUpperCase();
     private static final String NUMBER = "0123456789";
-    private static final String OTHER_CHAR = "!@#$%&*()_+-=[]?";
-    private static final String COMMON_CHAR = "A";
-    private static final String PASSWORD_ALLOW_BASE = CHAR_LOWER + CHAR_UPPER + NUMBER + OTHER_CHAR;
+    private static final String COMMON_CHAR = "A1";
+    private static final String PASSWORD_ALLOW_BASE = CHAR_LOWER + CHAR_UPPER + NUMBER;
     private static final SecureRandom random = new SecureRandom();
     private static Set<Integer> previousResults = new HashSet<>();
 
     public static String generateRandomPassword(int length) {
         StringBuilder stringBuilder = new StringBuilder(length);
-        for (int i = 0; i < length - 1; i++) {
+        for (int i = 0; i < length - 2; i++) {
             int rndCharAt = random.nextInt(PASSWORD_ALLOW_BASE.length());
             char rndChar = PASSWORD_ALLOW_BASE.charAt(rndCharAt);
             stringBuilder.append(rndChar);
@@ -29,7 +28,7 @@ public class RandomUtils {
 
     public static String generateRandomString(int length) {
         StringBuilder stringBuilder = new StringBuilder(length);
-        for (int i = 0; i < length - 1; i++) {
+        for (int i = 0; i < length - 2; i++) {
             int rndCharAt = random.nextInt(CHAR_LOWER.length());
             char rndChar = CHAR_LOWER.charAt(rndCharAt);
             stringBuilder.append(rndChar);
@@ -40,18 +39,19 @@ public class RandomUtils {
         return (String) letters.stream().collect(Collectors.joining());
     }
 
-    public static int generateRandomIntInRange(int minNumInRange, int maxNumInRange) {
+    public static int generateRandomNumberInRange(int minNumInRange, int maxNumInRange) {
         return (int) (Math.random() * ((maxNumInRange - minNumInRange) + 1) + minNumInRange);
     }
 
-    public static int generateRandomInterest() {
-        int result = generateRandomIntInRange(1, 21);
-        if (result == 21) { //Под этим номером находится Unselect All
-            return generateRandomInterest();
-        } else if (result == 18) { //Под этим номером находится Select All
-            return generateRandomInterest();
-        } else if (previousResults.contains(result)) { //Чтобы 1 чекбокс не нажимался два раза
-            return generateRandomInterest();
+    public static int generateRandomNumberInRangeExcept(int minNumInRange, int maxNumInRange, int...exceptNumbers) {
+        int result = generateRandomNumberInRange(minNumInRange, maxNumInRange);
+        for (int i = 0; i < exceptNumbers.length; i++) {
+            if (result == exceptNumbers[i]) {
+                return generateRandomNumberInRangeExcept(minNumInRange, maxNumInRange, exceptNumbers);
+            }
+        }
+        if (previousResults.contains(result)) {
+            return generateRandomNumberInRangeExcept(minNumInRange, maxNumInRange, exceptNumbers);
         } else {
             previousResults.add(result);
             return result;

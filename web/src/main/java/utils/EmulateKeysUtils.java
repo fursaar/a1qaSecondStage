@@ -17,13 +17,13 @@ public class EmulateKeysUtils {
         } catch (AWTException e) {
             e.printStackTrace();
         }
-        robot.delay(1000);
+        robot.delay((Integer) JsonUtil.configData.getValue("/robotDelay"));
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(1000);
+        robot.delay((Integer) JsonUtil.configData.getValue("/robotDelay"));
     }
 }
