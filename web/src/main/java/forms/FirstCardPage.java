@@ -43,26 +43,37 @@ public class FirstCardPage extends Form {
         switch (domain) {
             case  (".org"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.org']"), "Domain chooser");
+                break;
             case (".co.uk"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.co.uk']"), "Domain chooser");
+                break;
             case (".net"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.net']"), "Domain chooser");
+                break;
             case (".gov"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.gov']"), "Domain chooser");
+                break;
             case (".de"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.de']"), "Domain chooser");
+                break;
             case (".fr"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.fr']"), "Domain chooser");
+                break;
             case (".nl"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.nl']"), "Domain chooser");
+                break;
             case (".com"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.com']"), "Domain chooser");
+                break;
             case (".be"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.be']"), "Domain chooser");
+                break;
             case (".jpg"):
                 chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.jpg']"), "Domain chooser");
+                break;
             default:
                 AqualityServices.getLogger().error("Error in setChooseDomainButton method ( No such domain )");
+                break;
         }
     }
 
