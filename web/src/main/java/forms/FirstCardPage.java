@@ -13,14 +13,14 @@ public class FirstCardPage extends Form {
     private final ICheckBox termsCheckbox = getElementFactory().getCheckBox(By.xpath("//label[contains(@for, 'terms')]"), "Accept terms");
     private final IComboBox domainComboBox = getElementFactory().getComboBox(By.xpath("//div[contains(@class, 'opener')]"), "Domain dropdown opener");
     private  IButton chooseDomainButton;
-    private final ILink nextLink = getElementFactory().getLink(By.xpath("//a[@class ='button--secondary']"), "Next");
+    private final ILink nextLink = getElementFactory().getLink(By.className("button--secondary"), "Next");
     private final IButton hideHelpFormButton = getElementFactory().getButton(By.xpath("//button[contains(@class, 'send-to-bottom')]"), "Close help form");
     private final IButton expandHelpFormButton = getElementFactory().getButton(By.xpath("//button[contains(@class, 'close')]"), "Expand help form");
     private final IButton acceptCookiesButton = getElementFactory().getButton(By.xpath("//button[contains(text(), 'no')]"), "Accept cookies");
     private final ILabel timerLabel = getElementFactory().getLabel(By.xpath("//div[contains(@class, 'timer')]"), "Timer");
 
     public FirstCardPage() {
-        super(By.xpath("//div[@class='login-form']"), "First card page");
+        super(By.className("login-form"), "First card page");
     }
 
     public void enterPassword(String password) {

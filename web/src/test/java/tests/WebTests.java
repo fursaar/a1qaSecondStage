@@ -8,6 +8,7 @@ import forms.ThirdCardPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.EmulateKeysUtils;
+import utils.FileUtils;
 import utils.JsonUtil;
 import utils.RandomUtils;
 
@@ -43,7 +44,7 @@ public class WebTests extends BaseTest{
         secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, 21, 18, 21));
         secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, 21, 18, 21));
         secondCardPage.clickUploadButton();
-        EmulateKeysUtils.setClipboardData(JsonUtil.testData.getValue("/avatarFilePath").toString());
+        EmulateKeysUtils.setClipboardData(FileUtils.getFilePath(JsonUtil.testData.getValue("/avatarFilePath").toString()));
         EmulateKeysUtils.pasteClipboardData();
         secondCardPage.clickToNext();
         Assert.assertTrue(thirdCardPage.state().waitForDisplayed(), "Third card page should be opened");
