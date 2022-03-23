@@ -29,9 +29,9 @@ public class WebTests extends BaseTest{
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
 
         AqualityServices.getLogger().info(JsonUtil.testData.getValue("/thirdStep").toString());
-        firstCardPage.enterPassword(RandomUtils.generateRandomPassword(10));
-        firstCardPage.enterEmail(RandomUtils.generateRandomString(7));
-        firstCardPage.enterDomain(RandomUtils.generateRandomString(5));
+        firstCardPage.enterPassword(RandomUtils.generateRandomPassword((Integer) JsonUtil.testData.getValue("/lengthOfPassword")));
+        firstCardPage.enterEmail(RandomUtils.generateRandomString((Integer) JsonUtil.testData.getValue("/lengthOfEmail")));
+        firstCardPage.enterDomain(RandomUtils.generateRandomString((Integer) JsonUtil.testData.getValue("/lengthOfDomain")));
         firstCardPage.openDomainList();
         firstCardPage.chooseDomain(FirstCardPage.Domain.GOV);
         firstCardPage.uncheckTerms();
@@ -40,9 +40,9 @@ public class WebTests extends BaseTest{
 
         AqualityServices.getLogger().info(JsonUtil.testData.getValue("/fourthStep").toString());
         secondCardPage.unselectAllCheckboxes();
-        secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, 21, 18, 21));
-        secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, 21, 18, 21));
-        secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, 21, 18, 21));
+        secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, (Integer) JsonUtil.testData.getValue("/numberOfCheckboxes"), SecondCardPage.Checkboxes.SELECT_ALL.getIndexOfCheckbox(), SecondCardPage.Checkboxes.USELECT_ALL.getIndexOfCheckbox()));
+        secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, (Integer) JsonUtil.testData.getValue("/numberOfCheckboxes"), SecondCardPage.Checkboxes.SELECT_ALL.getIndexOfCheckbox(), SecondCardPage.Checkboxes.USELECT_ALL.getIndexOfCheckbox()));
+        secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, (Integer) JsonUtil.testData.getValue("/numberOfCheckboxes"), SecondCardPage.Checkboxes.SELECT_ALL.getIndexOfCheckbox(), SecondCardPage.Checkboxes.USELECT_ALL.getIndexOfCheckbox()));
         secondCardPage.clickUploadButton();
         EmulateKeysUtils.setClipboardData(FileUtils.getFilePath(JsonUtil.testData.getValue("/avatarFilePath").toString()));
         EmulateKeysUtils.pasteClipboardData();

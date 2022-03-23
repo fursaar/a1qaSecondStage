@@ -33,4 +33,38 @@ public class SecondCardPage extends Form {
     public void clickToNext() {
         nextButton.click();
     }
+
+    public enum Checkboxes {
+        PONIES (1),
+        POLO (2),
+        DOUGH (3),
+        SNAILS (4),
+        BALLS (5),
+        POSTITS (6),
+        FAUCETS (7),
+        ENVELOPPES (8),
+        CABLES (9),
+        QUESTIONS (10),
+        SQUARES (11),
+        PURPLE (12),
+        COTTON (13),
+        DRYWALL (14),
+        CLOSETS (15),
+        TIRES (16),
+        WINDOWS (17),
+        SELECT_ALL (18),
+        MULLETS (19),
+        CINNAMON (20),
+        USELECT_ALL (21);
+
+        private final int indexOfCheckbox;
+
+        Checkboxes(int indexOfCheckbox) {
+            this.indexOfCheckbox = indexOfCheckbox;
+        }
+
+        public int getIndexOfCheckbox() {
+            return this.indexOfCheckbox;
+        }
+    }
 }

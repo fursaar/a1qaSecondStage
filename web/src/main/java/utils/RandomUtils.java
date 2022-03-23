@@ -11,11 +11,12 @@ public class RandomUtils {
     private static final String COMMON_CHAR = "A1";
     private static final String PASSWORD_ALLOW_BASE = CHAR_LOWER + CHAR_UPPER + NUMBER;
     private static final SecureRandom random = new SecureRandom();
+    private static final int numberOfCommonChars = 2;
     private static Set<Integer> previousResults = new HashSet<>();
 
     public static String generateRandomPassword(int length) {
         StringBuilder stringBuilder = new StringBuilder(length);
-        for (int i = 0; i < length - 2; i++) {
+        for (int i = 0; i < length - numberOfCommonChars; i++) {
             int rndCharAt = random.nextInt(PASSWORD_ALLOW_BASE.length());
             char rndChar = PASSWORD_ALLOW_BASE.charAt(rndCharAt);
             stringBuilder.append(rndChar);
@@ -28,7 +29,7 @@ public class RandomUtils {
 
     public static String generateRandomString(int length) {
         StringBuilder stringBuilder = new StringBuilder(length);
-        for (int i = 0; i < length - 2; i++) {
+        for (int i = 0; i < length - numberOfCommonChars; i++) {
             int rndCharAt = random.nextInt(CHAR_LOWER.length());
             char rndChar = CHAR_LOWER.charAt(rndCharAt);
             stringBuilder.append(rndChar);

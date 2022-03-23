@@ -1,6 +1,5 @@
 package forms;
 
-import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.elements.interfaces.*;
 import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
@@ -12,7 +11,7 @@ public class FirstCardPage extends Form {
     private final ICheckBox termsCheckbox = getElementFactory().getCheckBox(By.xpath("//label[contains(@for, 'terms')]"), "Accept terms");
     private final IComboBox domainComboBox = getElementFactory().getComboBox(By.xpath("//div[contains(@class, 'opener')]"), "Domain dropdown opener");
     private  IButton chooseDomainButton;
-    private final ILink nextLink = getElementFactory().getLink(By.className("button--secondary"), "Next");
+    private final ILink nextPageLink = getElementFactory().getLink(By.className("button--secondary"), "Next page");
     private final IButton hideHelpFormButton = getElementFactory().getButton(By.xpath("//button[contains(@class, 'send-to-bottom')]"), "Close help form");
     private final IButton expandHelpFormButton = getElementFactory().getButton(By.xpath("//button[contains(@class, 'close')]"), "Expand help form");
     private final IButton acceptCookiesButton = getElementFactory().getButton(By.xpath("//button[contains(text(), 'no')]"), "Accept cookies");
@@ -38,12 +37,8 @@ public class FirstCardPage extends Form {
         domainComboBox.click();
     }
 
-    public void setChooseDomainButton(Domain domain) {
-        chooseDomainButton = getElementFactory().getButton(By.xpath(String.format("//div[@class ='dropdown__list']//div[text() = '%s']", domain.getDomainOption(domain))), "Domain chooser");
-    }
-
     public void chooseDomain(Domain domain) {
-        setChooseDomainButton(domain);
+        chooseDomainButton = getElementFactory().getButton(By.xpath(String.format("//div[@class ='dropdown__list']//div[text() = '%s']", domain.getDomainOption())), "Domain chooser");
         chooseDomainButton.click();
     }
 
@@ -52,7 +47,7 @@ public class FirstCardPage extends Form {
     }
 
     public void clickToNext() {
-        nextLink.click();
+        nextPageLink.click();
     }
 
     public void hideHelpForm() {
@@ -77,7 +72,7 @@ public class FirstCardPage extends Form {
 
     public enum Domain {
         ORG (".org"),
-        COUK (".co.uk"),
+        CO_UK (".co.uk"),
         NET (".net"),
         GOV (".gov"),
         DE (".de"),
@@ -93,8 +88,8 @@ public class FirstCardPage extends Form {
             this.domain = domain;
         }
 
-        public String getDomainOption(Domain domain) {
-            return domain.domain;
+        public String getDomainOption() {
+            return this.domain;
         }
     }
 }
