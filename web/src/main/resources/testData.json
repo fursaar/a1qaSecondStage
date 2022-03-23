@@ -1,10 +1,6 @@
 {
   "timerStartValue": "00:00:00",
   "avatarFilePath": "./img/avatar.png/",
-  "firstStep": "STEP 1",
-  "secondStep": "STEP 2",
-  "thirdStep": "STEP 3",
-  "fourthStep": "STEP 4",
   "lengthOfPassword": 10,
   "lengthOfEmail": 7,
   "lengthOfDomain" : 5,
