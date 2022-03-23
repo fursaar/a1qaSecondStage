@@ -21,24 +21,24 @@ public class WebTests extends BaseTest{
         SecondCardPage secondCardPage = new SecondCardPage();
         ThirdCardPage thirdCardPage = new ThirdCardPage();
 
-        AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/firstStep").toString());
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page page should be opened");
 
-        AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/secondStep").toString());
         mainPage.clickToStartLink();
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
 
-        AqualityServices.getLogger().info("STEP 3");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/thirdStep").toString());
         firstCardPage.enterPassword(RandomUtils.generateRandomPassword(10));
         firstCardPage.enterEmail(RandomUtils.generateRandomString(7));
         firstCardPage.enterDomain(RandomUtils.generateRandomString(5));
         firstCardPage.openDomainList();
-        firstCardPage.chooseDomain(".org");
+        firstCardPage.chooseDomain(FirstCardPage.Domain.GOV);
         firstCardPage.uncheckTerms();
         firstCardPage.clickToNext();
         Assert.assertTrue(secondCardPage.state().waitForDisplayed(), "Second card page should be opened");
 
-        AqualityServices.getLogger().info("STEP 4");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/fourthStep").toString());
         secondCardPage.unselectAllCheckboxes();
         secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, 21, 18, 21));
         secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, 21, 18, 21));
@@ -56,11 +56,11 @@ public class WebTests extends BaseTest{
         MainPage mainPage = new MainPage();
         FirstCardPage firstCardPage = new FirstCardPage();
 
-        AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/firstStep").toString());
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page should be opened");
         mainPage.clickToStartLink();
 
-        AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/secondStep").toString());
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
         firstCardPage.hideHelpForm();
         Assert.assertTrue(firstCardPage.waitForHelpFormClosing(), "Help form should be closed");
@@ -72,11 +72,11 @@ public class WebTests extends BaseTest{
         MainPage mainPage = new MainPage();
         FirstCardPage firstCardPage = new FirstCardPage();
 
-        AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/firstStep").toString());
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page should be opened");
         mainPage.clickToStartLink();
 
-        AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/secondStep").toString());
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
         firstCardPage.acceptCookies();
         Assert.assertTrue(firstCardPage.isCookiesFormClosed(), "Cookies form should be closed");
@@ -87,13 +87,12 @@ public class WebTests extends BaseTest{
         MainPage mainPage = new MainPage();
         FirstCardPage firstCardPage = new FirstCardPage();
 
-        AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/firstStep").toString());
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page should be opened");
         mainPage.clickToStartLink();
 
-        AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getLogger().info(JsonUtil.testData.getValue("/secondStep").toString());
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
         Assert.assertEquals(firstCardPage.getTextFromTimer(), JsonUtil.testData.getValue("/timerStartValue"));
     }
 }
-

@@ -1,5 +1,7 @@
 package utils;
 
+import aquality.selenium.browser.AqualityServices;
+
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
@@ -15,7 +17,7 @@ public class EmulateKeysUtils {
         try {
             robot = new Robot();
         } catch (AWTException e) {
-            e.printStackTrace();
+            AqualityServices.getLogger().error("Robot exception");
         }
         robot.delay((Integer) JsonUtil.configData.getValue("/robotDelay"));
         robot.keyPress(KeyEvent.VK_CONTROL);

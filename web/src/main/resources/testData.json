@@ -1,4 +1,8 @@
 {
   "timerStartValue": "00:00:00",
-  "avatarFilePath": "./img/avatar.png/"
+  "avatarFilePath": "./img/avatar.png/",
+  "firstStep": "STEP 1",
+  "secondStep": "STEP 2",
+  "thirdStep": "STEP 3",
+  "fourthStep": "STEP 4"
 }

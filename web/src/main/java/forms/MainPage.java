@@ -10,8 +10,8 @@ import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
 public class MainPage extends Form {
-
     private final ILink startLink = getElementFactory().getLink(getLocator(), "Start");
+
     public MainPage() {
         super(By.xpath("//a[contains(@class, 'start')]"), "Start");
     }
@@ -19,8 +19,4 @@ public class MainPage extends Form {
     public void clickToStartLink() {
         startLink.click();
     }
-
-
-
-
 }

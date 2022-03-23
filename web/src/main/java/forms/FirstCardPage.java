@@ -6,7 +6,6 @@ import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
 public class FirstCardPage extends Form {
-
     private final ITextBox passwordTextBox = getElementFactory().getTextBox(By.xpath("//input[contains(@placeholder, 'Password')]"), "Password");
     private final ITextBox emailTextBox = getElementFactory().getTextBox(By.xpath("//input[contains(@placeholder, 'email')]"), "Email");
     private final ITextBox domainTextBox = getElementFactory().getTextBox(By.xpath("//input[contains(@placeholder, 'Domain')]"), "Domain");
@@ -39,46 +38,12 @@ public class FirstCardPage extends Form {
         domainComboBox.click();
     }
 
-    public void setChooseDomainButton(String domain) {
-        switch (domain) {
-            case  (".org"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.org']"), "Domain chooser");
-                break;
-            case (".co.uk"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.co.uk']"), "Domain chooser");
-                break;
-            case (".net"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.net']"), "Domain chooser");
-                break;
-            case (".gov"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.gov']"), "Domain chooser");
-                break;
-            case (".de"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.de']"), "Domain chooser");
-                break;
-            case (".fr"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.fr']"), "Domain chooser");
-                break;
-            case (".nl"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.nl']"), "Domain chooser");
-                break;
-            case (".com"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.com']"), "Domain chooser");
-                break;
-            case (".be"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.be']"), "Domain chooser");
-                break;
-            case (".jpg"):
-                chooseDomainButton = getElementFactory().getButton(By.xpath("//div[@class ='dropdown__list']//div[text() = '.jpg']"), "Domain chooser");
-                break;
-            default:
-                AqualityServices.getLogger().error("Error in setChooseDomainButton method ( No such domain )");
-                break;
-        }
+    public void setChooseDomainButton(Domain domain) {
+        chooseDomainButton = getElementFactory().getButton(By.xpath(String.format("//div[@class ='dropdown__list']//div[text() = '%s']", domain.getDomainOption(domain))), "Domain chooser");
     }
 
-    public void chooseDomain(String domainName) {
-        setChooseDomainButton(domainName);
+    public void chooseDomain(Domain domain) {
+        setChooseDomainButton(domain);
         chooseDomainButton.click();
     }
 
@@ -108,5 +73,28 @@ public class FirstCardPage extends Form {
 
     public String getTextFromTimer() {
         return timerLabel.getText();
+    }
+
+    public enum Domain {
+        ORG (".org"),
+        COUK (".co.uk"),
+        NET (".net"),
+        GOV (".gov"),
+        DE (".de"),
+        FR (".fr"),
+        NL (".nl"),
+        COM (".com"),
+        BE (".be"),
+        JPG (".jpg");
+
+        private final String domain;
+
+        Domain(String domain) {
+            this.domain = domain;
+        }
+
+        public String getDomainOption(Domain domain) {
+            return domain.domain;
+        }
     }
 }

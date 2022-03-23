@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import utils.EmulateKeysUtils;
 
 public class SecondCardPage extends Form {
-
     private final ICheckBox unselectAllCheckbox = getElementFactory().getCheckBox(getLocator(), "Unselect All");
     private ICheckBox randomCheckbox;
     private ILink uploadLink = getElementFactory().getLink(By.xpath("//a[contains(@class, 'upload')]"), "Upload link");
@@ -34,5 +33,4 @@ public class SecondCardPage extends Form {
     public void clickToNext() {
         nextButton.click();
     }
-
 }
