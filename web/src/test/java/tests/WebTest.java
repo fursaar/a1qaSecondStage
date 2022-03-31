@@ -12,7 +12,7 @@ import utils.FileUtils;
 import utils.JsonUtil;
 import utils.RandomUtils;
 
-public class WebTests extends BaseTest{
+public class WebTest extends BaseTest{
     @Test
     public void firstCase() {
 
