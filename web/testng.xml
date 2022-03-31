@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="D:/a1qaSecondStage/a2.tomilov/web/src">
-    <classes>
-        <class name="tests.WebTest">
-            <methods>
-                <include name="firstCase"/>
-                <include name="secondCase"/>
-                <include name="thirdCase"/>
-                <include name="fourthCase"/>
-            </methods>
-        </class>
-    </classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="browser" value="chrome"></parameter>
+    <test verbose="2" preserve-order="true" name="D:/a1qaSecondStage/a2.tomilov/web/src">
+        <classes>
+            <class name="tests.WebTest">
+                <methods>
+                    <include name="firstCase"/>
+                    <include name="secondCase"/>
+                    <include name="thirdCase"/>
+                    <include name="fourthCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

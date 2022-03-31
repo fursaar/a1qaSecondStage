@@ -3,6 +3,7 @@ package tests;
 import aquality.selenium.browser.AqualityServices;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import utils.JsonUtil;
 
 public class BaseTest {
