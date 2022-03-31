@@ -22,13 +22,16 @@ public class WebTest extends BaseTest{
         ThirdCardPage thirdCardPage = new ThirdCardPage();
 
         AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getBrowser().getScreenshot();
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page page should be opened");
 
         AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getBrowser().getScreenshot();
         mainPage.clickToStartLink();
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
 
         AqualityServices.getLogger().info("STEP 3");
+        AqualityServices.getBrowser().getScreenshot();
         firstCardPage.enterPassword(RandomUtils.generateRandomPassword((Integer) JsonUtil.testData.getValue("/lengthOfPassword")));
         firstCardPage.enterEmail(RandomUtils.generateRandomString((Integer) JsonUtil.testData.getValue("/lengthOfEmail")));
         firstCardPage.enterDomain(RandomUtils.generateRandomString((Integer) JsonUtil.testData.getValue("/lengthOfDomain")));
@@ -39,6 +42,7 @@ public class WebTest extends BaseTest{
         Assert.assertTrue(secondCardPage.state().waitForDisplayed(), "Second card page should be opened");
 
         AqualityServices.getLogger().info("STEP 4");
+        AqualityServices.getBrowser().getScreenshot();
         secondCardPage.unselectAllCheckboxes();
         secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, (Integer) JsonUtil.testData.getValue("/numberOfCheckboxes"), SecondCardPage.Checkboxes.SELECT_ALL.getIndexOfCheckbox(), SecondCardPage.Checkboxes.USELECT_ALL.getIndexOfCheckbox()));
         secondCardPage.selectCheckboxByIndex(RandomUtils.generateRandomNumberInRangeExcept(1, (Integer) JsonUtil.testData.getValue("/numberOfCheckboxes"), SecondCardPage.Checkboxes.SELECT_ALL.getIndexOfCheckbox(), SecondCardPage.Checkboxes.USELECT_ALL.getIndexOfCheckbox()));
@@ -57,10 +61,12 @@ public class WebTest extends BaseTest{
         FirstCardPage firstCardPage = new FirstCardPage();
 
         AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getBrowser().getScreenshot();
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page should be opened");
         mainPage.clickToStartLink();
 
         AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getBrowser().getScreenshot();
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
         firstCardPage.hideHelpForm();
         Assert.assertTrue(firstCardPage.waitForHelpFormClosing(), "Help form should be closed");
@@ -73,10 +79,12 @@ public class WebTest extends BaseTest{
         FirstCardPage firstCardPage = new FirstCardPage();
 
         AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getBrowser().getScreenshot();
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page should be opened");
         mainPage.clickToStartLink();
 
         AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getBrowser().getScreenshot();
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
         firstCardPage.acceptCookies();
         Assert.assertTrue(firstCardPage.isCookiesFormClosed(), "Cookies form should be closed");
@@ -88,10 +96,12 @@ public class WebTest extends BaseTest{
         FirstCardPage firstCardPage = new FirstCardPage();
 
         AqualityServices.getLogger().info("STEP 1");
+        AqualityServices.getBrowser().getScreenshot();
         Assert.assertTrue(mainPage.state().waitForDisplayed(), "Main page should be opened");
         mainPage.clickToStartLink();
 
         AqualityServices.getLogger().info("STEP 2");
+        AqualityServices.getBrowser().getScreenshot();
         Assert.assertTrue(firstCardPage.state().waitForDisplayed(), "First card page should be opened");
         Assert.assertEquals(firstCardPage.getTextFromTimer(), JsonUtil.testData.getValue("/timerStartValue"));
     }
