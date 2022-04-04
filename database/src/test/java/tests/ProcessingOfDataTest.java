@@ -16,7 +16,7 @@ import static database.tables.TestTable.deleteTests;
 public class ProcessingOfDataTest extends BaseTest{
     List<database.businessobjects.Test> duplicateIdsTests;
     @BeforeTest
-    public void beforeTest() {
+    public void beforeTests() {
         duplicateIdsTests = getTestsByIds(DuplicateNumberUtil.generateDuplicateNumbersUpTo(RandomUtils.generateRandomNumberInRange(1, 9), TestTable.getMaxId()));
         insertTests(duplicateIdsTests);
     }
