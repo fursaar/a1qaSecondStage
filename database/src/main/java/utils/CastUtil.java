@@ -7,8 +7,12 @@ public class CastUtil {
         String firstValue = String.valueOf(list.get(0));
         String otherValues = "";
         for (int i =1; i < list.size(); i++) {
-            otherValues = otherValues + ", " + String.valueOf(list.get(i));
+            otherValues = String.format("%s, %s", otherValues, list.get(i));
         }
         return firstValue + otherValues;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(castListValuesToString(DuplicateNumberUtil.generateDuplicateNumbersUpTo(1,200)));
     }
 }

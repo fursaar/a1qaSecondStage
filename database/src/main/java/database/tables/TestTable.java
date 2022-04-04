@@ -65,6 +65,16 @@ public class TestTable {
         }
     }
 
+    public static boolean isTestsInDB(List<Test> tests) {
+        boolean result = false;
+        for (int i = 0; i < tests.size(); i ++) {
+            while (tests.get(i).isTestInDB()) {
+                result = tests.get(i).isTestInDB();
+            }
+        }
+        return result;
+    }
+
     public static int getMaxId()  {
         int result = 0;
         try {
@@ -77,4 +87,5 @@ public class TestTable {
         }
         return  result;
     }
+
 }

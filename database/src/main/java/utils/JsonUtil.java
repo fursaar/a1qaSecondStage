@@ -16,4 +16,13 @@ public class JsonUtil {
             AqualityServices.getLogger().error("testData file not found");
         }
     }
+
+    public static ISettingsFile configData;
+    static {
+        try {
+            configData = new JsonSettingsFile(new File("./src/main/resources/configData.json/"));
+        } catch (IOException e) {
+            AqualityServices.getLogger().error("configData file not found");
+        }
+    }
 }

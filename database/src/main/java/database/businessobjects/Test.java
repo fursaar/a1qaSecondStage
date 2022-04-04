@@ -3,6 +3,7 @@ package database.businessobjects;
 import aquality.selenium.browser.AqualityServices;
 import database.DataBaseManager;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -65,6 +66,20 @@ public class Test {
             this.browser = newBrowser;
             this.author_id = newAuthor_id;
         }
+    }
+
+    public boolean isTestInDB() {
+        boolean isTestExist = false;
+        try {
+            Statement checkStatement = DataBaseManager.getConnection().createStatement();
+            ResultSet result = checkStatement.executeQuery(String.format("select * from test where name = '%s' and status_id = %d and method_name = '%s' and project_id = %d", name, status_id, method_name, project_id));
+            if (result.next()) {
+                isTestExist = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isTestExist;
     }
 
     public void setAuthor_id(int author_id) {

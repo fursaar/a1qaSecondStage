@@ -1,14 +1,26 @@
 package tests;
 
+import database.tables.TestTable;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-import testlisteners.ProcessingOfDataListener;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
+import utils.DuplicateNumberUtil;
+import utils.JsonUtil;
 import utils.RandomUtils;
 
-@Listeners(ProcessingOfDataListener.class)
+import java.util.List;
+
+import static database.tables.TestTable.*;
+import static database.tables.TestTable.deleteTests;
 
 public class ProcessingOfDataTest extends BaseTest{
+    List<database.businessobjects.Test> duplicateIdsTests;
+    @BeforeTest
+    public void beforeTest() {
+        duplicateIdsTests = getTestsByIds(DuplicateNumberUtil.generateDuplicateNumbersUpTo(RandomUtils.generateRandomNumberInRange(1, 9), TestTable.getMaxId()));
+        insertTests(duplicateIdsTests);
+    }
+
     @Test
     public void test1() {
         Assert.assertTrue(RandomUtils.getTrueOrFalse());
@@ -48,5 +60,12 @@ public class ProcessingOfDataTest extends BaseTest{
     @Test
     public void test10() {
         Assert.assertTrue(RandomUtils.getTrueOrFalse());
+    }
+
+    @AfterMethod
+    public void afterTest(ITestResult iTestResult) {
+        updateTests(duplicateIdsTests, iTestResult.getName(), iTestResult.getStatus(), iTestResult.getMethod().getMethodName(), (Integer) JsonUtil.testData.getValue("/project_id"), (Integer) JsonUtil.testData.getValue("/session_id"), JsonUtil.testData.getValue("/env").toString(), "none", (Integer) JsonUtil.testData.getValue("/author_id"));
+        deleteTests(duplicateIdsTests);
+        Assert.assertFalse(isTestsInDB(duplicateIdsTests));
     }
 }

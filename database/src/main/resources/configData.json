@@ -1,0 +1,5 @@
+{
+  "url": "jdbc:mysql://localhost:",
+  "port": "3306",
+  "nameOfDB": "/union_reporting"
+}
