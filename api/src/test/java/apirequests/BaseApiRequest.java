@@ -1,5 +1,6 @@
 package apirequests;
 
+import io.opentelemetry.api.trace.StatusCode;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 
@@ -62,5 +63,21 @@ public class BaseApiRequest<T>{
                 .then()
                 .statusCode(expectedStatusCode)
                 .extract().body().as(basePojo);
+    }
+
+    public enum StatusCode {
+        OK_GET(200),
+        OK_POST(201),
+        NOT_FOUND(404);
+
+        private final int statusCode;
+
+        StatusCode(int statusCode) {
+            this.statusCode = statusCode;
+        }
+
+        public int getStatusCode() {
+            return statusCode;
+        }
     }
 }

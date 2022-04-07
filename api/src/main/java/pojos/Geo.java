@@ -3,7 +3,7 @@ package pojos;
 import lombok.Data;
 
 @Data
-public class GeoPojo {
+public class Geo {
     private String lat;
     private String lng;
 }

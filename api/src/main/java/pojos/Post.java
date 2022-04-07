@@ -4,7 +4,7 @@ package pojos;
 import lombok.Data;
 
 @Data
-public class PostPojo {
+public class Post {
 
     private int userId;
     private int id;

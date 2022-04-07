@@ -1,6 +1,8 @@
 {
-  "name": "resources",
-  "version": "1.0.0",
-  "dependencies": {
-  }
+  "post99expectedId": 99,
+  "post99expectedUserId": 10,
+  "post99path": "/99",
+  "post150path": "/150",
+  "user5path": "/5"
+
 }

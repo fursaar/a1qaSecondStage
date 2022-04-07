@@ -8,21 +8,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class JsonUtil {
-    public static ISettingsFile testData;
-    static {
+    public static ISettingsFile getJsonFile(String nameOfJsonFile) {
+        ISettingsFile outputFile = null;
         try {
-            testData = new JsonSettingsFile(new File("./src/main/resources/testData.json/"));
+            outputFile = new JsonSettingsFile(new File(String.format("./src/main/resources/%s.json/", nameOfJsonFile)));
         } catch (IOException e) {
-            AqualityServices.getLogger().error("testData file not found");
+            AqualityServices.getLogger().error(String.format("%s file not found", nameOfJsonFile));
         }
-    }
-
-    public static ISettingsFile configData;
-    static {
-        try {
-            configData = new JsonSettingsFile(new File("./src/main/resources/configData.json/"));
-        } catch (IOException e) {
-            AqualityServices.getLogger().error("configData file not found");
-        }
+        return outputFile;
     }
 }

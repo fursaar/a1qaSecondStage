@@ -1,19 +1,26 @@
 package utils;
 
-import pojos.PostPojo;
+import pojos.Post;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListUtils {
-    public static boolean checkAscendingSorting(List<PostPojo> list) {
-        boolean result = false;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == i + 1) {
-                result = true;
-            } else {
-                return false;
-            }
-        }
-        return result;
-    } //Мне не очень нравится эта реализация, но другую я придумать не смог
+    public static List<Integer> sortList(List<Integer> list) {
+        Collections.sort(list);
+        return list;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(4);
+        list.add(10);
+        list.add(3);
+        list.add(2);
+        System.out.println(list);
+        System.out.println(sortList(list));
+    }
 }
