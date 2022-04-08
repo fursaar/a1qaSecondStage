@@ -21,6 +21,7 @@ public class ApiTest {
     public void Test() {
         BaseApiRequest<Post> postsRequest = new BaseApiRequest<>(JsonUtil.getJsonFile("configData").getValue("/baseUri").toString(), "/posts", Post.class);
         BaseApiRequest<User> usersRequest = new BaseApiRequest<>(JsonUtil.getJsonFile("configData").getValue("/baseUri").toString(), "/users", User.class);
+        JsonUtil<User> userParser = new JsonUtil<>();
 
 
         AqualityServices.getLogger().info("STEP1");
@@ -56,8 +57,9 @@ public class ApiTest {
 
         AqualityServices.getLogger().info("STEP5");
         JsonPath users = usersRequest.getAllFieldsAsJsonPath(BaseApiRequest.StatusCode.OK_GET.getStatusCode());
-        User userToCompare = usersRequest.getFieldByPath(JsonUtil.getJsonFile("testData").getValue("/user5path").toString(), BaseApiRequest.StatusCode.OK_GET.getStatusCode());
+        User userToCompare =userParser.castJsonStringToPojo(JsonUtil.getJsonFile("testData").getValue("/user5").toString(), User.class);
         Assert.assertEquals(users.getObject("find{it.id==5}", User.class), userToCompare);
+
 
 
         AqualityServices.getLogger().info("STEP6");
