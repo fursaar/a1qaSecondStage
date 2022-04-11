@@ -1,40 +1,29 @@
 package apirequests;
 
-import io.opentelemetry.api.trace.StatusCode;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
+import utils.JsonUtil;
 
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class BaseApiRequest<T>{
-
-    private String baseUri;
-    private String basePath;
-    private Class<T> basePojo;
-
-    public BaseApiRequest(String baseUri, String basePath, Class<T> basePojo) {
-        this.baseUri = baseUri;
-        this.basePath = basePath;
-        this.basePojo = basePojo;
-    }
-
-    public List<T> getAllFieldsAsList(int expectedStatusCode) {
+public class BaseApiRequest{
+    public static  <T> List<T> getFieldsAsListByPath(String path, int expectedStatusCode, Class<T> pojoClass) {
         return given()
-                .baseUri(baseUri)
-                .basePath(basePath)
+                .baseUri(JsonUtil.getJsonFile("configData").getValue("/apiUri").toString())
+                .basePath(path)
                 .when().get()
                 .then()
                 .statusCode(expectedStatusCode)
                 .contentType(ContentType.JSON)
-                .extract().jsonPath().getList("", basePojo);
+                .extract().jsonPath().getList("", pojoClass);
     }
 
-    public JsonPath getAllFieldsAsJsonPath(int expectedStatusCode) {
+    public static JsonPath getFieldsAsJsonPathByPath(String path, int expectedStatusCode) {
         return given()
-                .baseUri(baseUri)
-                .basePath(basePath)
+                .baseUri(JsonUtil.getJsonFile("configData").getValue("/apiUri").toString())
+                .basePath(path)
                 .when().get()
                 .then()
                 .statusCode(expectedStatusCode)
@@ -42,27 +31,27 @@ public class BaseApiRequest<T>{
                 .extract().jsonPath();
     }
 
-    public T getFieldByPath(String path, int expectedStatusCode) {
+    public static  <T> T getFieldByPath(String path, int expectedStatusCode, Class<T> pojoClass) {
         return given()
-                .baseUri("https://jsonplaceholder.typicode.com")
-                .basePath(String.format("%s%s", basePath, path))
+                .baseUri(JsonUtil.getJsonFile("configData").getValue("/apiUri").toString())
+                .basePath(path)
                 .when().get()
                 .then()
                 .statusCode(expectedStatusCode)
                 .contentType(ContentType.JSON)
-                .extract().body().as(basePojo);
+                .extract().body().as(pojoClass);
     }
 
-    public T createField(int expectedStatusCode, Object pojoToInsert) {
+    public static  <T> T createFieldByPath(String path, int expectedStatusCode, Object pojoToInsert, Class<T> pojoClass) {
         return given()
-                .baseUri("https://jsonplaceholder.typicode.com")
-                .basePath(basePath)
+                .baseUri(JsonUtil.getJsonFile("configData").getValue("/apiUri").toString())
+                .basePath(path)
                 .contentType(ContentType.JSON)
                 .body(pojoToInsert)
                 .when().post()
                 .then()
                 .statusCode(expectedStatusCode)
-                .extract().body().as(basePojo);
+                .extract().body().as(pojoClass);
     }
 
     public enum StatusCode {

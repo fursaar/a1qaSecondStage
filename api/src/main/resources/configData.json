@@ -1,3 +1,4 @@
 {
-  "baseUri": "https://jsonplaceholder.typicode.com"
+  "apiUri": "https://jsonplaceholder.typicode.com"
+
 }

@@ -1,9 +1,11 @@
 {
   "post99expectedId": 99,
   "post99expectedUserId": 10,
-  "post99path": "/99",
-  "post150path": "/150",
-  "user5path": "/5",
+  "postsPath": "/posts",
+  "usersPath": "/users",
+  "post99path": "/posts/99",
+  "post150path": "/posts/150",
+  "user5path": "users/5",
   "user5": {
     "id": 5,
     "name": "Chelsey Dietrich",

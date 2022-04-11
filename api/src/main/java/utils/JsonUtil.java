@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-public class JsonUtil<T> {
+public class JsonUtil {
     public static ISettingsFile getJsonFile(String nameOfJsonFile) {
         ISettingsFile outputFile = null;
         try {
@@ -20,7 +20,7 @@ public class JsonUtil<T> {
         return outputFile;
     }
 
-    public T castJsonStringToPojo(String jsonString, Class<T> pojo) {
+    public static <T> T castJsonStringToPojo(String jsonString, Class<T> pojo) {
         T result = null;
         ObjectMapper objectMapper = new ObjectMapper();
         try {
