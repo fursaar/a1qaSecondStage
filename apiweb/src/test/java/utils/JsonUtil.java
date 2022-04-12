@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-public class JsonUtil<T> {
+public class JsonUtil {
     public static ISettingsFile getJsonFile(String nameOfJsonFile) {
         ISettingsFile outputFile = null;
         try {

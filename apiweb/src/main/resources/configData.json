@@ -1,3 +1,6 @@
 {
-  "baseUrl": "https://vk.com/"
+  "baseUrl": "https://vk.com/",
+  "postLiked": 1 ,
+  "postNotLiked": 0,
+  "baseLengthOfRandomString": 10
 }

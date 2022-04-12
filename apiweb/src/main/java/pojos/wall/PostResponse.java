@@ -1,8 +1,8 @@
-package pojos;
+package pojos.wall;
 
 import lombok.Data;
 
 @Data
-public class Response {
+public class PostResponse {
     private int post_id;
 }
