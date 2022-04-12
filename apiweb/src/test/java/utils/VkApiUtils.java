@@ -23,7 +23,7 @@ public class VkApiUtils {
                 .contentType(ContentType.APPLICATION_JSON.getMimeType())
                 .queryString("message", message)
                 .queryString("owner_id", ownerId)
-                .queryString("access_token", JsonUtil.getJsonFile("testData").getValue("/token").toString())
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
                 .queryString("v", versionOfApi)
                 .asObject(Post.class);
     }
@@ -35,7 +35,7 @@ public class VkApiUtils {
                 .queryString("post_id", postId)
                 .queryString("owner_id", ownerId)
                 .queryString("message", commentText)
-                .queryString("access_token", JsonUtil.getJsonFile("testData").getValue("/token").toString())
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
                 .queryString("v", versionOfApi)
                 .asObject(Comment.class);
     }
@@ -47,7 +47,7 @@ public class VkApiUtils {
                 .queryString("type", "post")
                 .queryString("owner_id", ownerId)
                 .queryString("item_id", postId)
-                .queryString("access_token", JsonUtil.getJsonFile("testData").getValue("/token").toString())
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
                 .queryString("v", versionOfApi)
                 .asObject(IsLiked.class);
     }
@@ -57,7 +57,7 @@ public class VkApiUtils {
     private static HttpResponse<Server> getUploadServer() {
         return Unirest.get(String.format("%s/photos.getWallUploadServer", apiUrl))
                 .header("User-agent", USER_AGENT)
-                .queryString("access_token", JsonUtil.getJsonFile("testData").getValue("/token").toString())
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
                 .queryString("v", versionOfApi)
                 .asObject(Server.class);
     }
@@ -76,7 +76,7 @@ public class VkApiUtils {
                 .queryString("server", server)
                 .queryString("photo", photo)
                 .queryString("hash", hash)
-                .queryString("access_token", JsonUtil.getJsonFile("testData").getValue("/token").toString())
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
                 .queryString("v", versionOfApi)
                 .asObject(Photo.class);
     }
@@ -101,7 +101,7 @@ public class VkApiUtils {
                 .queryString("owner_id", ownerId)
                 .queryString("attachments", imgPathOnServer)
                 .queryString("post_id", postId)
-                .queryString("access_token", JsonUtil.getJsonFile("testData").getValue("/token").toString())
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
                 .queryString("v", versionOfApi)
                 .asObject(Post.class);
     }
@@ -112,7 +112,7 @@ public class VkApiUtils {
                 .contentType(ContentType.APPLICATION_JSON.getMimeType())
                 .queryString("post_id", postId)
                 .queryString("owner_id", ownerId)
-                .queryString("access_token", JsonUtil.getJsonFile("testData").getValue("/token").toString())
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
                 .queryString("v", versionOfApi)
                 .asObject(Post.class);
     }

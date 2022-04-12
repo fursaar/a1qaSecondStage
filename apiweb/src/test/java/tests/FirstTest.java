@@ -29,8 +29,8 @@ public class FirstTest extends BaseTest{
 
         AqualityServices.getLogger().info("STEP2");
         Assert.assertTrue(signInForm.state().waitForDisplayed());
-        signInForm.enterLogin(JsonUtil.getJsonFile("testData").getValue("/login").toString());
-        signInForm.enterPassword(JsonUtil.getJsonFile("testData").getValue("/password").toString());
+        signInForm.enterLogin(JsonUtil.getJsonFile("configData").getValue("/login").toString());
+        signInForm.enterPassword(JsonUtil.getJsonFile("configData").getValue("/password").toString());
 
         AqualityServices.getLogger().info("STEP3");
         Assert.assertTrue(feedPage.state().waitForDisplayed());
@@ -50,6 +50,7 @@ public class FirstTest extends BaseTest{
         File photo = new File("./img/meme.jpg");
         String photoPath = VkApiUtils.uploadImgOnServerAndGetPath(photo);
         VkApiUtils.editPost(String.format("%s - edited", randomPostText), photoPath, postId, (Integer) JsonUtil.getJsonFile("testData").getValue("/userId"));
+
 
         AqualityServices.getLogger().info("STEP7");
         Assert.assertNotEquals(profilePage.getPostTextByPostId(postId), randomPostText);
@@ -77,7 +78,7 @@ public class FirstTest extends BaseTest{
         VkApiUtils.deletePost(postId, (Integer) JsonUtil.getJsonFile("testData").getValue("/userId"));
 
         AqualityServices.getLogger().info("STEP12");
-        Assert.assertFalse(profilePage.isPostExist(postId));
+        Assert.assertTrue(profilePage.isPostDeleted(postId));
 
     }
 }

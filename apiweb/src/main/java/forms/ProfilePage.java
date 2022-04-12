@@ -36,9 +36,9 @@ public class ProfilePage extends Form {
         postLikeButton.click();
     }
 
-    public boolean isPostExist(int postId) {
+    public boolean isPostDeleted(int postId) {
         setPostByPostId(postId);
-        return postLabel.state().isExist();
+        return postLabel.state().waitForNotDisplayed();
     }
 
     public String getNameOfPostAuthorByPostId(int postId) {
