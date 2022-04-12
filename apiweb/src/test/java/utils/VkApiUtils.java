@@ -1,5 +1,6 @@
 package utils;
 
+import aquality.selenium.browser.AqualityServices;
 import kong.unirest.ContentType;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -52,35 +53,6 @@ public class VkApiUtils {
                 .asObject(IsLiked.class);
     }
 
-
-
-    private static HttpResponse<Server> getUploadServer() {
-        return Unirest.get(String.format("%s/photos.getWallUploadServer", apiUrl))
-                .header("User-agent", USER_AGENT)
-                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
-                .queryString("v", versionOfApi)
-                .asObject(Server.class);
-    }
-
-    private static HttpResponse<UploadImageOnServer> uploadImageOnSever(String serverUrl, File photo) {
-        return Unirest.post(serverUrl)
-                .header("User-agent", USER_AGENT)
-                .field("photo", photo)
-                .asObject(UploadImageOnServer.class);
-    }
-
-    private static HttpResponse<Photo> saveWallPhoto(int server, String photo, String hash) {
-        return Unirest.post(String.format("%s/photos.saveWallPhoto", apiUrl))
-                .header("User-agent", USER_AGENT)
-                .contentType(ContentType.APPLICATION_JSON.getMimeType())
-                .queryString("server", server)
-                .queryString("photo", photo)
-                .queryString("hash", hash)
-                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
-                .queryString("v", versionOfApi)
-                .asObject(Photo.class);
-    }
-
     public static String uploadImgOnServerAndGetPath(File photo) {
         String uploadUrl = VkApiUtils.getUploadServer().getBody().getResponse().getUpload_url();
         UploadImageOnServer uploadPhotoResponse = VkApiUtils.uploadImageOnSever(uploadUrl, photo).getBody();
@@ -117,5 +89,31 @@ public class VkApiUtils {
                 .asObject(Post.class);
     }
 
+    private static HttpResponse<Server> getUploadServer() {
+        return Unirest.get(String.format("%s/photos.getWallUploadServer", apiUrl))
+                .header("User-agent", USER_AGENT)
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
+                .queryString("v", versionOfApi)
+                .asObject(Server.class);
+    }
+
+    private static HttpResponse<UploadImageOnServer> uploadImageOnSever(String serverUrl, File photo) {
+        return Unirest.post(serverUrl)
+                .header("User-agent", USER_AGENT)
+                .field("photo", photo)
+                .asObject(UploadImageOnServer.class);
+    }
+
+    private static HttpResponse<Photo> saveWallPhoto(int server, String photo, String hash) {
+        return Unirest.post(String.format("%s/photos.saveWallPhoto", apiUrl))
+                .header("User-agent", USER_AGENT)
+                .contentType(ContentType.APPLICATION_JSON.getMimeType())
+                .queryString("server", server)
+                .queryString("photo", photo)
+                .queryString("hash", hash)
+                .queryString("access_token", JsonUtil.getJsonFile("configData").getValue("/token").toString())
+                .queryString("v", versionOfApi)
+                .asObject(Photo.class);
+    }
 }
 

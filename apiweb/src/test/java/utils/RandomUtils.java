@@ -10,6 +10,7 @@ public class RandomUtils {
     private static final String chars = "abcdefghijklmnopqrstuvwxyz";
     private static final SecureRandom random = new SecureRandom();
 
+
     public static String generateRandomString(int length) {
         StringBuilder stringBuilder = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
