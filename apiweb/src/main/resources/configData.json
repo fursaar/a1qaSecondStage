@@ -1,9 +1,11 @@
 {
-  "baseUrl": "https://vk.com/",
   "postLiked": 1 ,
   "postNotLiked": 0,
   "baseLengthOfRandomString": 10,
-  "login": "+375291660762",
-  "password": "PuV6j_.2&$m9h?UYY",
-  "token": "30dac1be7f5ebd6781218b6adacaa70dbf1537e99d3ca12f679c39968356d20c9647de73cd43df5ad1874"
+  "login": "",
+  "password": "",
+  "token": "",
+  "versionOfApi": "5.131",
+  "userAgent": "VKontakte/1.0"
+
 }

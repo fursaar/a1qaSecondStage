@@ -8,7 +8,7 @@ public class FeedPage extends Form {
     private final IButton profile = getElementFactory().getButton(By.xpath("//*[@id='l_pr']"), "Profile");
 
     public FeedPage() {
-        super(By.xpath("//div[@id='stories_feed_items']"), "Stroies");
+        super(By.id("l_pr"), "Profile");
     }
 
     public void clickToProfile() {
