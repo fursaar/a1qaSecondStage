@@ -5,13 +5,13 @@ import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
 public class FeedPage extends Form {
-    private final IButton profile = getElementFactory().getButton(By.xpath("//*[@id='l_pr']"), "Profile");
+    private final IButton profileButton = getElementFactory().getButton(getLocator(), "Profile");
 
     public FeedPage() {
-        super(By.id("l_pr"), "Profile");
+        super(By.id("l_pr"), "Feed page");
     }
 
     public void clickToProfile() {
-        profile.click();
+        profileButton.click();
     }
 }

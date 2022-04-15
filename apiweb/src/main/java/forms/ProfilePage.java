@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 public class ProfilePage extends Form {
 
     public ProfilePage() {
-        super(By.xpath("//div[@id='page_photos_module']"), "Photos");
+        super(By.xpath("//div[@id='page_photos_module']"), "Profile page");
     }
 
     public void clickToLikeButtonUnderPost(int postId) {

@@ -8,7 +8,7 @@ public class MainPage extends Form {
     private final IButton signInButton = getElementFactory().getButton(By.xpath("//div[@id='index_login']//button[contains(@class, 'signIn')]"), "Sign In");
 
     public MainPage() {
-        super(By.id("index_login"), "Index login");
+        super(By.id("index_login"), "Main page");
     }
 
     public void clickToSignIn() {
